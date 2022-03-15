@@ -1,6 +1,8 @@
 from tkinter import Tk
 from tkinter import *
 from tkinter import filedialog
+# from Componente import Componentes
+from Analizador import AnalizadorLexico
 
 def bt():
     lbl.configure(text="ME PRESIONAROOON")
@@ -18,10 +20,20 @@ def leerForm():
     if archivo is not None: #Comienza analisis
         lectura = archivo.read()
         txt.insert('insert',lectura)
-
+    
 def analizar():
     texto = txt.get("1.0", "end-1c")
-    print(texto)
+    if len(texto) > 0:
+            lexico = AnalizadorLexico()
+            lexico.analizar(texto)
+            tokens = lexico.listaTokens
+            # cmp = Componentes()
+            # componentes = cmp.getComponentes(tokens)
+            # print(componentes,'\n')
+            lexico.imprimirTokens()
+            lexico.imprimirErrores()
+            lexico.crearHTML(tokens)
+
 
 
 if __name__ == '__main__':

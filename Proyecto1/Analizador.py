@@ -1,6 +1,9 @@
 from Token import Token
 from Error import Error
 from prettytable import PrettyTable
+import webbrowser
+import time
+
 class AnalizadorLexico:
     def __init__(self):
         self.listaTokens = []
@@ -17,7 +20,8 @@ class AnalizadorLexico:
         self.buffer = ''
     
     def agregar_Error(self,caracter,linea,columna):
-        self.listaErrores.append(Error('Caracter \'' + caracter + '\' no reconocido',linea,columna))
+        if ord(caracter)>= 48 and ord(caracter)<= 57:
+            self.listaErrores.append(Error('Caracter \'' + caracter + '\' error de tipo Numero',linea,columna))
 
     def s0(self,caracter):
         '''Estado 0'''
@@ -172,6 +176,7 @@ class AnalizadorLexico:
         self.i -= 1
 
     def analizar(self,cadena):
+        '''Realiza los cambios de estados'''
         cadena += '$'
         self.i = 0
         while self.i < len(cadena):
@@ -214,3 +219,68 @@ class AnalizadorLexico:
         for error in self.listaErrores:
             x.add_row([error.descripcion,error.linea,error.columna])
         print(x)
+    
+    def crearHTML(self,tokens):
+        texto = ''
+        f = open('./ReporteTokens.html','w')
+        texto += '''
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <title>Reporte Tokens</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+            />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        </head>
+        <body style="background-color: rgb(243, 240, 235);">
+        <div class="container">
+        <br>
+        <h2 class="text-center" style="font-weight: bold; color: rgb(36, 36, 179);">Tabla de Tokens</h2>
+        <br>
+        <h6 style="font-weight:600 ;">A continuacion se presentan tabla de tokens encontrados en el lenguaje:</h6>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+        <tr>
+        <th class="text-center">LEXEMA</th>
+        <th class="text-center">FILA</th>
+        <th class="text-center">COLUMNA</th>
+        <th class="text-center">TIPO</th>
+        </tr>
+        </thead>
+        <tbody>'''
+        for token in tokens:
+            texto +='''
+        <!-- ASI SE CREA UNA FILA -->
+        <tr>
+            <td class="text-center">'''+token.lexema+'''</td>
+            <td class="text-center">'''+str(token.linea)+'''</td>
+            <td class="text-center">'''+str(token.columna)+'''</td>
+            <td class="text-center">'''+token.tipo+'''</td>
+        </tr>   '''
+        texto +='''
+        </tbody>
+        </table>
+        <br>
+                    
+        </body>
+        <hr>
+        <footer>
+            <h5 style="text-align: right; font-weight: bolder;">Josue Gramajo - 202000895</h5>
+            <h6 style="text-align: right; font-weight: bold;">Reporte generado:'''+time.ctime()+'''</h6>
+        </footer>
+        </html>
+        '''
+        mensaje = texto 
+        f.write(mensaje)
+        f.close()
+
+        webbrowser.open_new_tab('ReporteTokens.html')
