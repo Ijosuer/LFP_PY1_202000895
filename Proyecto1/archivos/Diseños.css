@@ -1,0 +1,191 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1C2833;
+    height: 100vh
+}
+
+.login{
+    width: 320px;
+    height: 380px;
+    background: rgba(187, 60, 10, 0.945);
+    color: #fff;
+    top: 25%;
+    bottom: 20%;
+    position: absolute;
+    transform: (-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    margin-left: 520px;
+    border-radius: 10px;
+}
+.login .avatar{
+    background-color: #1C2833;
+    opacity: 6;
+    width: 140px;
+    height: 140px;
+    border-radius: 80px;
+    position: fixed;
+    top: -100px;
+    left: 84px;
+    padding: 10px;
+}
+.login h1{
+    margin: 0%;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.login label{
+    margin: 0% ;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    font-size: 17px;
+}
+.login input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login input[type="text"],
+.login input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(20, 14, 14);
+    font-size: 16px;
+}
+.login input[type="button"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: rgba(83, 218, 65, 0.993);
+    color: black;
+    font-size: 18px;
+    border-radius: 20px
+}
+.login a{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(218, 219, 217);
+}
+.login a:hover{
+    background: rgb(46, 43, 43);
+    transition: 25ms;
+}
+::placeholder{
+    color: darkgray
+}
+#back{
+    height: 70px;
+    width: 70px;
+    background: white;
+    border-radius: 50px;
+    margin: 1%;
+
+    border-color:rgb(142, 201, 235);
+}
+/*-------------------------------------------------*/
+/*Reutilizamos el codigo del login para el registro*/
+body.Registro{
+    background-color: #1C2833;
+    font-family: sans-serif;
+    margin-bottom: 10%;
+    padding: 0;
+    height:650px;
+}
+.register{
+    width: auto;
+    height: 450px;
+    background: rgba(187, 60, 10, 0.945);
+    color: #fff;
+    top: 25%;
+    bottom: 20%;
+    position: absolute;
+    transform: (-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    margin-left: 520px;
+    border-radius: 10px;
+}
+.register .avatar{
+    background-color: #1C2833;
+    opacity: 6;
+    width: 140px;
+    height: 140px;
+    border-radius: 80px;
+    position: absolute;
+    top: -100px;
+    left: 120px;
+    padding: 10px;
+}
+.register h1{
+    margin: 0%;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.register label{
+    margin: 0% ;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    font-size: 17px;
+}
+.register input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.register input[type="text"],
+.register input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(20, 14, 14);
+    font-size: 16px;
+}
+
+.register input[type="radio"]{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.register input[type="button"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: rgba(83, 218, 65, 0.938);
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-top: 2em;
+}
+select{
+    width: 270px;
+    color: black;
+    margin-top: 2%;
+    margin-bottom: 7%;
+}
+.register a{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(218, 219, 217);
+}
+.register a:hover{
+    background: rgb(46, 43, 43);
+    transition: 25ms;
+}
+.divR{
+    display: flex;
+    margin-top: 20px;
+}

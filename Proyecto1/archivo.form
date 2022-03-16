@@ -1,6 +1,6 @@
 formulario ~~> [
     <
-        tipo: "etiqueta",
+        tipo:"etiqueta",
         valor: "Nombre1:"
     >,
     <

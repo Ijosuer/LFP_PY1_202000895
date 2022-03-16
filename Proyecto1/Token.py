@@ -1,6 +1,6 @@
 class Token:
-    def __init__(self,lexema : str,linea : int,columna : int,tipo : str):
+    def __init__(self,lexema,fila ,columna ,tipo ):
         self.lexema = lexema
-        self.linea = linea
+        self.fila = fila
         self.columna = columna
         self.tipo = tipo

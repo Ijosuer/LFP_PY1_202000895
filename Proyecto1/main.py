@@ -1,12 +1,10 @@
-from tkinter import Tk
+from tkinter import Tk, messagebox
 from tkinter import *
 from tkinter import filedialog
-# from Componente import Componentes
+from Formulario import Componentes
 from Analizador import AnalizadorLexico
 
-def bt():
-    lbl.configure(text="ME PRESIONAROOON")
-
+metodos = AnalizadorLexico()
 def clearTextInput():
     txt.delete("1.0","end")
 
@@ -20,22 +18,37 @@ def leerForm():
     if archivo is not None: #Comienza analisis
         lectura = archivo.read()
         txt.insert('insert',lectura)
+    else:
+        messagebox.showinfo(message='Error al escoger el archivo',title='ARCHIVO .Form')
     
 def analizar():
     texto = txt.get("1.0", "end-1c")
     if len(texto) > 0:
-            lexico = AnalizadorLexico()
-            lexico.analizar(texto)
-            tokens = lexico.listaTokens
-            # cmp = Componentes()
-            # componentes = cmp.getComponentes(tokens)
-            # print(componentes,'\n')
-            lexico.imprimirTokens()
-            lexico.imprimirErrores()
-            lexico.crearHTML(tokens)
+            tokens = metodos.listaTokens
+            metodos.analizar(texto)
+            cmp = Componentes()
+            componentes = cmp.getComponentes(tokens)
+            print(componentes,'\n')
+            metodos.imprimirTokens()
+            metodos.imprimirErrores()
+            # lexico.crearTTokens(tokens)
+            # lexico.crearTErrores(errores)
+    else:
+        messagebox.showinfo(message='No hay contenido en el archivo .-.',title='ARCHIVO .Form')
 
-
-
+def reportes():
+    tokens = metodos.listaTokens
+    errores = metodos.listaErrores
+    op = aux3.get()
+    if op == 'Reporte de Tokens':
+        metodos.crearTTokens(tokens)
+    elif op == 'Reporte de Errores':
+        metodos.crearTErrores(errores)
+    elif op == 'Manual de Usuario':
+        print('Manual de usuario paps')
+    elif op == 'Manual Tecnico':
+        print('Manual tecnico paps')
+# Aqui esta toda la app grafica.
 if __name__ == '__main__':
 
     window = Tk()
@@ -50,6 +63,7 @@ if __name__ == '__main__':
     aux.place(x=635,y=0)
     lbl_menu = Label(window,text='INICIO (:',bg='#f39c12',width=10,borderwidth=2,relief='raised',foreground='white',font='Arial 12 bold',height=2).place(x=0,y=0)
     btn_carga = Button(window,text='Cargar Archivo',command=leerForm,bg='#f39c12',width=11,borderwidth=4,relief='raised',foreground='black',font='Arial 11 bold',height=2).place(x=0,y=44.5)
+    btn_reportes = Button(window,text='Seleccionar',command=reportes,bg='#f39c12',width=11,borderwidth=4,relief='raised',foreground='black',font='Arial 11 bold',height=1).place(x=678,y=52.5)
     lbl= Label(window,text='ANALIZADOR DE TEXTOS \'.FORM\'',bg='#d4ac0d',borderwidth=5,relief='raised',foreground='black',font='Arial 12 bold',height=2).place(x=260,y=10)
     btn = Button(window, text="ANALIZAR",bg='#2980b9',borderwidth=5,fg='white',font='Arial 10 bold',command=analizar,height=2)
     btn.place(x=350,y=480)
