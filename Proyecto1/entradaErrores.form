@@ -1,0 +1,32 @@
+formulario$%12 ~>> [
+
+    <
+        tipo: "etiqueta123$",
+        valor: "Nombre:" ^&^&$%^55405
+    >,
+    <
+        tipo: "texto",
+        valor: "Nombre",
+        fondo: "Ingrese nombre"
+    >,
+    <
+        tipo: "texto16546",
+        valor$%^$#: "Nombre",
+        fondo123: "Ingrese nombre"
+    >,
+    <
+        tipo: "grupo-radio",
+        nombre: "sexo",
+        valores: ['Masculino', 'Femenino']
+    >,
+    <
+        tipo: "boton",
+        valor: "Valor",
+        evento: info111111116
+    >,
+    <
+        tipo: "grupo-option",
+        nombre: "país",
+        valores: ['Guatemala', 'El salvador', 'Honduras']
+    >,
+]

@@ -50,7 +50,7 @@ class AnalizadorLexico:
             self.estado = 6
             self.buffer += caracter
             self.columna += 1
-        elif (caracter.isalpha()) and self.flag_comillas:
+        elif (caracter.isalpha() or (ord(caracter)>= 48 and ord(caracter)<= 57)) and self.flag_comillas:
             self.estado = 7
             self.buffer += caracter
             self.columna += 1

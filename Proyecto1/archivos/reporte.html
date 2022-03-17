@@ -6,6 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FORM</title>
         <link rel="stylesheet" href="/archivos/Diseños.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+        function idk(){
+
+            
+            $(document).ready(function() {
+                $("#data").click(function(){
+                    $('#serializearray').text(
+                            array = ($('form').serializeArray())
+
+                        );
+                        console.log(array)
+                        var cadena = ""
+                        for (let step = 0; step < array.length; step++) {
+                            cadena = cadena + array[step].value + "<br>"
+                    }})})
+                }
+        </script>
     </head>
     
     <body class="Registro">
@@ -14,41 +32,61 @@
             <img class="avatar" src="/archivos/avatardef.png">
             <h1 class="restar">FORM GENERADO</h1>
             <form name="form">   
-                   <!-- text  -->
-                   <label for=Nombre">Nombre</label>
+                    
+                    <!-- text  -->
+                    <label for="Nombre">Nombre</label>
                         
-                   <input type="text" placeholder="Ingrese Nombre"  id="" >
-                   
-                       <!-- Radio  -->
-                       <div class="divR">
-                           <label  for="sexo:">sexo:</label>
-                               
-                           <input type="radio" id="Masculino" name="fav_language" value="Masculino">
-                           <label style="color: rgb(146, 140, 140);" for="Masculino">Masculino</label>
-                           
-                           <input type="radio" id="Femenino" name="fav_language" value="Femenino">
-                           <label style="color: rgb(146, 140, 140);" for="Femenino">Femenino</label>
-                           </div><br>
-                       <!-- Select -->
-                               <label for="pais:" >pais:</label>
-                               <select  id="pais:" >
-                       
-                           <option value="Guatemala">Guatemala</option>
+                    <input type="text" value="Nombre:"  name="Nombre:" placeholder="Ingrese su nombre por fabor" >
+                    
+                        <!-- Radio  -->
+                        <div class="divR">
+                            <label  for="sexo:">sexo:</label>
+                                
+                            <input type="radio" name="sexo" name="fav_language" value="Masculino">
+                            <label style="color: rgb(146, 140, 140);" for="Masculino">Masculino</label>
+                            
+                            <input type="radio" name="Femenino" name="fav_language" value="Femenino">
+                            <label style="color: rgb(146, 140, 140);" for="Femenino">Femenino</label>
+                            
+                            <input type="radio" name="Otro" name="fav_language" value="Otro">
+                            <label style="color: rgb(146, 140, 140);" for="Otro">Otro</label>
+                            </div><br>
+                        <!-- Select -->
+                                <label for="pais:" >pais:</label>
+                                <select  name="pais:" >
+                        
+                            <option value="Guatemala">Guatemala</option>
 
-                           
-                           <option value="El Salvador">El Salvador</option>
+                            
+                            <option value="1">1</option>
 
-                           
-                           <option value="Honduras">Honduras</option>
+                            
+                            <option value="El Salvador">El Salvador</option>
 
-                           
-                   <input type="button" onclick="registrar()" value="Valor">
-                       </form>
-                   </div>
-                          
-        <iframe name=miframeflotante src="/archivos/iframe.html" width=400 height=550 frameborder="1" scrolling=yes marginwidth=2 marginheight=4 align=left> </iframe>
-                   
-        
+                            
+                            <option value="Honduras">Honduras</option>
+
+                            
+                            <option value="Nicaragua">Nicaragua</option>
+
+                            
+                            <option value="Panama">Panama</option>
+
+                            
+                            <input type="button" id='data' onclick="idk()" value="Valor">
+                        </form>
+                    </div>
+                    
+                 
+                    <div id="results">
+                        <iframe name=miframeflotante src="/archivos/iframe.html" width=400 height=550 frameborder="1" scrolling=yes marginwidth=2 marginheight=4 align=left> </iframe>
+                    </div>               
+            <SCRipt>
+                function llamar(){
+
+                    console.log('SHIT MANNNN')
+                }
+            </SCRipt>
         <!-- $(document).ready(function() {
     $("#info").click(function(){
     console.log("hey yo soy info")
@@ -57,6 +95,7 @@
         $('#serializearray').text(
             array = ($('form').serializeArray())
 
+            <script ></script>
         );
         console.log(array)
         var cadena = ""
@@ -66,6 +105,5 @@
 ` -->
 
         <!-- Scripts -->
-        <script src="js/scriptRegistro.js"></script>
     </body>
 </html>

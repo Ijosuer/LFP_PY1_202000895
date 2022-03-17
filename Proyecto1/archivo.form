@@ -5,17 +5,18 @@ formulario ~~> [
     >,
     <
         tipo: "texto",
-        fondo: "Ingrese Nombre"
+        valor: "Nombre:",
+        fondo: "Ingrese su nombre por fabor"
     >,
     <
         tipo: "grupo-radio",
         valor: "sexo:",
-        valores: ['Masculino','Femenino']
+        valores: ['Masculino','Femenino','Otro']
     >,
     <
         tipo: "grupo-option",
         valor: "pais:",
-        valores: ['Guatemala','El Salvador','Honduras']
+        valores: ['Guatemala1','El Salvador','Honduras','Nicaragua',Panama']
     >,
     <
         tipo: "boton",

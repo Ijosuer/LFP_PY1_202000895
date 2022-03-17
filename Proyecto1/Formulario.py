@@ -60,25 +60,25 @@ class Form:
                     
                 if flag_valor == True and flag_fondo == True:
                     content+='''
-                    <input type="text" value="'''+value+'''"  id="'''+value+'''" placeholder="'''+fondo+'''" >
+                    <input type="text" value="'''+value+'''"  name="'''+value+'''" placeholder="'''+fondo+'''" >
                     '''
                     print(content)
                     pass
                 elif flag_fondo== False and flag_valor == True:
                     content+='''
-                    <input type="text" value="'''+value+'''"  id="'''+value+'''" >
+                    <input type="text" value="'''+value+'''"  name="'''+value+'''" >
                     '''
                     print(content)
                     pass
                 elif flag_valor== False and flag_fondo == True:
                     content+='''
-                    <input type="text" placeholder="'''+fondo+'''"  id="'''+value+'''" >
+                    <input type="text" placeholder="'''+fondo+'''"  name="'''+value+'''" >
                     '''
                     print(content)
                     pass
                 else:
                     content+='''
-                    <input type="text"  id="'''+value+''' >
+                    <input type="text"  name="'''+value+''' >
                     '''
                     print(content)
                     pass
@@ -98,7 +98,7 @@ class Form:
                     elif key == 'valores':
                         for i in tag[key]:
                             content+='''
-                            <input type="radio" id="'''+i+'''" name="fav_language" value="'''+i+'''">
+                            <input type="radio" name="'''+i+'''" name="fav_language" value="'''+i+'''">
                             <label style="color: rgb(146, 140, 140);" for="'''+i+'''">'''+i+'''</label>
                             '''
                             print(i)
@@ -114,7 +114,7 @@ class Form:
                         content+='''
                         <!-- Select -->
                                 <label for="'''+tag[key]+'''" >'''+tag[key]+'''</label>
-                                <select  id="'''+tag[key]+'''" >
+                                <select  name="'''+tag[key]+'''" >
                         '''
                     elif key == 'valores':
                         for i in tag[key]:
