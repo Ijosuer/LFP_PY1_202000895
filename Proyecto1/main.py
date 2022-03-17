@@ -1,7 +1,7 @@
-from tkinter import Tk, messagebox
+from tkinter import Tk,filedialog, messagebox
 from tkinter import *
-from tkinter import filedialog
-from Formulario import Componentes
+
+from Formulario import Form
 from Analizador import AnalizadorLexico
 
 metodos = AnalizadorLexico()
@@ -24,30 +24,35 @@ def leerForm():
 def analizar():
     texto = txt.get("1.0", "end-1c")
     if len(texto) > 0:
+            metodos.listaTokens = []
+            metodos.listaErrores = []
+
             tokens = metodos.listaTokens
             metodos.analizar(texto)
-            cmp = Componentes()
-            componentes = cmp.getComponentes(tokens)
-            print(componentes,'\n')
+            componentes = Form()
+            etiquetas = componentes.allEtiquetas(tokens)
+            print(etiquetas,'\n')
+
             metodos.imprimirTokens()
             metodos.imprimirErrores()
-            # lexico.crearTTokens(tokens)
-            # lexico.crearTErrores(errores)
+            componentes.enviarEtiquetas(etiquetas)
+            # metodos.crearTTokens(tokens)
+            # metodos.crearTErrores(errores)
     else:
         messagebox.showinfo(message='No hay contenido en el archivo .-.',title='ARCHIVO .Form')
 
 def reportes():
-    tokens = metodos.listaTokens
-    errores = metodos.listaErrores
     op = aux3.get()
     if op == 'Reporte de Tokens':
-        metodos.crearTTokens(tokens)
+        metodos.crearTTokens()
     elif op == 'Reporte de Errores':
-        metodos.crearTErrores(errores)
+        metodos.crearTErrores()
     elif op == 'Manual de Usuario':
         print('Manual de usuario paps')
     elif op == 'Manual Tecnico':
         print('Manual tecnico paps')
+
+
 # Aqui esta toda la app grafica.
 if __name__ == '__main__':
 

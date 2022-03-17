@@ -1,9 +1,9 @@
+
 from Token import Token
 from Error import Error
 from prettytable import PrettyTable
 import webbrowser
 import time
-
 class AnalizadorLexico:
     def __init__(self):
         self.buffer = ''
@@ -50,7 +50,7 @@ class AnalizadorLexico:
             self.estado = 6
             self.buffer += caracter
             self.columna += 1
-        elif caracter.isalpha() and self.flag_comillas:
+        elif (caracter.isalpha()) and self.flag_comillas:
             self.estado = 7
             self.buffer += caracter
             self.columna += 1
@@ -235,7 +235,7 @@ class AnalizadorLexico:
             x.add_row([error.descripcion,error.fila,error.columna])
         print(x)
     
-    def crearTTokens(self,tokens):
+    def crearTTokens(self):
         texto = ''
         f = open('./ReporteTokens.html','w')
         texto += '''
@@ -272,7 +272,7 @@ class AnalizadorLexico:
         </tr>
         </thead>
         <tbody>'''
-        for token in tokens:
+        for token in self.listaTokens:
             texto +='''
         <tr>
             <td class="text-center">'''+token.lexema+'''</td>
@@ -299,7 +299,7 @@ class AnalizadorLexico:
 
         webbrowser.open_new_tab('ReporteTokens.html')
 
-    def crearTErrores(self,errores):
+    def crearTErrores(self):
         texto = ''
         f = open('./ReporteErrores.html','w')
         texto += '''
@@ -335,7 +335,7 @@ class AnalizadorLexico:
         </tr>
         </thead>
         <tbody>'''
-        for error in errores:
+        for error in self.listaErrores:
             texto +='''
         <!-- ASI SE CREA UNA FILA -->
         <tr>
