@@ -14,30 +14,56 @@
             <img class="avatar" src="/archivos/avatardef.png">
             <h1 class="restar">FORM GENERADO</h1>
             <form name="form">   
-                <!-- text  -->
-                <label for="usuario">Nombre</label>
-                <input type="text"  id="nombre" placeholder="Ingrese su Nombre">
-                    
-                        <!-- Radio  -->
-                        <div class="divR">
-                            <label  for="usuario">Usuario</label>
-                            <input type="radio" id="html" name="fav_language" value="HTML">
-                            <label style="color: rgb(146, 140, 140);" for="html">HTML</label>
-                            <input type="radio" id="css" name="fav_language" value="CSS">
-                            <label style="color: rgb(146, 140, 140);" for="css">CSS</label>
-                        </div>
-                        <br>
-                                <!-- Select -->
-                                <label for="contraseña" >select</label>
-                                <select  id="pwd" placeholder="Ingrese Contraseña">
-                                    <option value="value1">Value 1</option>
-                                    <option value="value2" selected>Value 2</option>
-                                    <option value="value3">Value 3</option> 
-                                <input type="button" onclick="registrar()" value="Login"> 
+                   <!-- text  -->
+                   <label for=Nombre">Nombre</label>
+                        
+                   <input type="text" placeholder="Ingrese Nombre"  id="" >
+                   
+                       <!-- Radio  -->
+                       <div class="divR">
+                           <label  for="sexo:">sexo:</label>
+                               
+                           <input type="radio" id="Masculino" name="fav_language" value="Masculino">
+                           <label style="color: rgb(146, 140, 140);" for="Masculino">Masculino</label>
+                           
+                           <input type="radio" id="Femenino" name="fav_language" value="Femenino">
+                           <label style="color: rgb(146, 140, 140);" for="Femenino">Femenino</label>
+                           </div><br>
+                       <!-- Select -->
+                               <label for="pais:" >pais:</label>
+                               <select  id="pais:" >
+                       
+                           <option value="Guatemala">Guatemala</option>
 
-                
-            </form>
-        </div>
+                           
+                           <option value="El Salvador">El Salvador</option>
+
+                           
+                           <option value="Honduras">Honduras</option>
+
+                           
+                   <input type="button" onclick="registrar()" value="Valor">
+                       </form>
+                   </div>
+                          
+        <iframe name=miframeflotante src="/archivos/iframe.html" width=400 height=550 frameborder="1" scrolling=yes marginwidth=2 marginheight=4 align=left> </iframe>
+                   
+        
+        <!-- $(document).ready(function() {
+    $("#info").click(function(){
+    console.log("hey yo soy info")
+
+
+        $('#serializearray').text(
+            array = ($('form').serializeArray())
+
+        );
+        console.log(array)
+        var cadena = ""
+        for (let step = 0; step < array.length; step++) {
+        cadena = cadena + array[step].value + "<br>"
+}
+` -->
 
         <!-- Scripts -->
         <script src="js/scriptRegistro.js"></script>
