@@ -9,6 +9,11 @@ formulario ~~> [
         fondo: "Ingrese su nombre por fabor"
     >,
     <
+        tipo: "boton",
+        valor: "Valor",
+        evento: info
+    >,
+    <
         tipo: "grupo-radio",
         valor: "sexo:",
         valores: ['Masculino','Femenino','Otro']
@@ -18,9 +23,4 @@ formulario ~~> [
         valor: "pais:",
         valores: ['Guatemala1','El Salvador','Honduras','Nicaragua',Panama']
     >,
-    <
-        tipo: "boton",
-        valor: "Valor",
-        evento <EVENTO>
-    >
 ]

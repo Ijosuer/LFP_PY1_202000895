@@ -32,7 +32,8 @@ def analizar():
             componentes = Form()
             etiquetas = componentes.allEtiquetas(tokens)
             print(etiquetas,'\n')
-
+            
+            componentes.crearForm(tokens)
             metodos.imprimirTokens()
             metodos.imprimirErrores()
             componentes.enviarEtiquetas(etiquetas)

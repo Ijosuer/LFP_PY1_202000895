@@ -1,30 +1,41 @@
+import webbrowser
 class Form:
-    def __init__(self):
-        self.boton = 0
-        self.text = 0 
-        self.radio = 0
-        self.label = 0
-        self.select = 0 
-        self.getSelect = ''
-        self.getElements = ''
-        self.getRadio = ''
-
-    def FormInicio():
+    
+    def FormInicio(self):
         inicio =''
         inicio = ''' 
-    !DOCTYPE html>
+    <!DOCTYPE html>
         <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>FORM</title>
-                <link rel="stylesheet" href="/archivos/Diseños.css">
+                <link rel="stylesheet" href="archivos/Diseños.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                    function idk(){
+
+                        
+                        $(document).ready(function() {
+                            $("#data").click(function(){
+                                $('#serializearray').text(
+                                        array = ($('form').serializeArray())
+
+                                        );
+                                        console.log(array)
+                                        var cadena = ""
+                                        for (let step = 0; step < array.length; step++) {
+                                            cadena = cadena + array[step].value 
+                                            document.querySelector('#results').innerText = cadena;
+                                        }})})
+                            }
+                    </script>
             </head>
             
             <body class="Registro">
                     <div class="register">
-                    <img class="avatar" src="/archivos/avatardef.png">
+                    <img class="avatar" src="archivos/avatardef.png">
                     <h1 class="restar">FORM GENERADO</h1>
                     <form name="form">  '''
         return inicio
@@ -98,7 +109,7 @@ class Form:
                     elif key == 'valores':
                         for i in tag[key]:
                             content+='''
-                            <input type="radio" name="'''+i+'''" name="fav_language" value="'''+i+'''">
+                            <input type="radio" name="'''+i+'''" value="'''+i+'''">
                             <label style="color: rgb(146, 140, 140);" for="'''+i+'''">'''+i+'''</label>
                             '''
                             print(i)
@@ -121,7 +132,7 @@ class Form:
                             print(i)
                             content+='''
                             <option value="'''+i+'''">'''+i+'''</option>
-
+                    
                             '''
                 print('--------')
 
@@ -135,12 +146,22 @@ class Form:
                         print(tag[key])
                         evento = ''
                         evento = tag[key]
-                content+='''
-                    <input type="button" onclick="registrar()" value="'''+value+'''">
-                        </form>
-                    </div>
-                '''
+                        if evento == 'info':
+                            content+='''
+                                </select>
+                                <input type="button" id='data' onclick="idk()" value="'''+value+'''">
+                                    </form>
+                                </div>''' 
+                        elif evento == 'entrada':
+                            content+='''
+                                </select>
+                                <input type="button" id='data' onclick="idk()" value="'''+value+'''">
+                                    </form>
+                                </div>
+                            ''' 
         print(content)
+        return content
+        
     def allEtiquetas(self,tokens):
         etiquetas = []
         for i in range(len(tokens)):
@@ -207,6 +228,25 @@ class Form:
                     if tokens[x].tipo == 'reservada_valor':
                         componente[tokens[x].lexema] = tokens[x + 3].lexema
                     if tokens[x].tipo == 'reservada_evento':
-                        componente[tokens[x].lexema] = tokens[x + 3].lexema
+                        componente[tokens[x].lexema] = tokens[x + 2].lexema
                 etiquetas.append(componente)
-        return etiquetas 
+        return etiquetas
+    
+    def crearForm(self,tokens):
+        text = ''
+        etiquetas = self.allEtiquetas(tokens)
+        text += self.FormInicio()
+        text+= self.enviarEtiquetas(etiquetas)
+        text+= '''  
+                    <div id="results">
+                        <iframe name=miframeflotante src="archivos/iframe.html" width=200 height=200 frameborder="1" scrolling=no marginwidth=2 marginheight=4 align=left> </iframe>
+                    </div>
+                    </body>
+                    </html>
+        '''
+        print(text)
+        form = open('./Formulario.html','w')
+        form.write(text)
+        form.close()
+
+        # webbrowser.open_new_tab('Formulario.html')
