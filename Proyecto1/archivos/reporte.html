@@ -1,4 +1,4 @@
-
+ 
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -21,8 +21,9 @@
                                     console.log(array)
                                     var cadena = ""
                                     for (let step = 0; step < array.length; step++) {
-                                        cadena = cadena + array[step].value 
-                                        document.querySelector('#results').innerText = cadena;
+                                        cadena = cadena + array[step].value + '\n'
+                                        // document.querySelector('#results').innerText = cadena;
+                            localStorage.setItem('eslainfo',cadena)
                                     }})})
                         }
                 </script>
@@ -34,9 +35,9 @@
                 <h1 class="restar">FORM GENERADO</h1>
                 <form name="form">  
                     <!-- text  -->
-                    <label for="Nombre:">Nombre:</label>
+                    <label for="Nombre1:">Nombre1:</label>
                     
-                <input type="text"  name="" >
+                <input type="text" value="Nombre:"  name="Nombre:" placeholder="Ingrese su nombre por fabor" >
                 
                     <!-- Radio  -->
                     <div class="divR">
@@ -55,10 +56,7 @@
                             <label for="pais:" >pais:</label>
                             <select  name="pais:" >
                     
-                        <option value="Guatemala">Guatemala</option>
-                
-                        
-                        <option value="1">1</option>
+                        <option value="Guatemala1">Guatemala1</option>
                 
                         
                         <option value="El Salvador">El Salvador</option>
@@ -70,11 +68,12 @@
                         <option value="Nicaragua">Nicaragua</option>
                 
                         
-                        <option value="Panama">Panama</option>
-                
-                          
+                            </select>
+                            <input type="button" id='data' onclick="entrada()" value="Valor">
+                                </form>
+                            </div>  
                 <div id="results">
-                    <iframe name=miframeflotante src="archivos/iframe.html" width=200 height=200 frameborder="1" scrolling=no marginwidth=2 marginheight=4 align=left> </iframe>
+                    <iframe name=miframeflotante src="/archivos/iframe.html" width=200 height=200 frameborder="1" scrolling=no marginwidth=2 marginheight=4 align=left> </iframe>
                 </div>
                 </body>
                 </html>

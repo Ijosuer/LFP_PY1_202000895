@@ -19,8 +19,8 @@ formulario ~~> [
         valores: ['Masculino','Femenino','Otro']
     >,
     <
-        tipo: "grupo-option",
+        tipo:"grupo-option",
         valor: "pais:",
-        valores: ['Guatemala1','El Salvador','Honduras','Nicaragua',Panama']
+        valores: ['Guatemala1','El Salvador','Honduras','Nicaragua','Panama']
     >,
 ]

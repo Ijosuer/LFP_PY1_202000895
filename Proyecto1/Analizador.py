@@ -1,10 +1,10 @@
-
 from Token import Token
 from Error import Error
 from prettytable import PrettyTable
 import webbrowser
 import time
-class AnalizadorLexico:
+
+class Scanner:
     def __init__(self):
         self.buffer = ''
         self.fila = 1
@@ -87,7 +87,6 @@ class AnalizadorLexico:
             self.buffer += caracter
             self.columna += 1
         else:
-
             if (self.buffer.lower() == 'formulario' or self.buffer.lower() == 'tipo' 
             or self.buffer.lower() == 'valor' or self.buffer.lower() == 'fondo' or self.buffer.lower() == 'valores' 
             or self.buffer.lower() == 'evento'): 
@@ -139,28 +138,16 @@ class AnalizadorLexico:
             self.flag_comillas = True
     
     def s7(self,caracter):
-        '''Estado 7'''
+        '''Estado 7 - cadenas'''
         if caracter.isalpha():
             self.estado = 7
             self.buffer += caracter
             self.columna += 1
+        elif caracter in ['+','!','*','@',' ','-',':',';','#','%','^','&','?',',','.','|']:
+            self.estado = 7
+            self.buffer += caracter
+            self.columna += 1
         elif caracter.isdigit():
-            self.estado = 7
-            self.buffer += caracter
-            self.columna += 1
-        elif caracter == ' ':
-            self.estado = 7
-            self.buffer += caracter
-            self.columna += 1
-        elif caracter == '-':
-            self.estado = 7
-            self.buffer += caracter
-            self.columna += 1
-        elif caracter == ':':
-            self.estado = 7
-            self.buffer += caracter
-            self.columna += 1
-        elif caracter == '%':
             self.estado = 7
             self.buffer += caracter
             self.columna += 1

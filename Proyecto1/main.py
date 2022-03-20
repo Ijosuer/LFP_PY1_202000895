@@ -1,10 +1,12 @@
 from tkinter import Tk,filedialog, messagebox
 from tkinter import *
 
-from Formulario import Form
-from Analizador import AnalizadorLexico
+from matplotlib.pyplot import text
 
-metodos = AnalizadorLexico()
+from Form import Form
+from Analizador import Scanner
+
+metodos = Scanner()
 def clearTextInput():
     txt.delete("1.0","end")
 
@@ -17,6 +19,7 @@ def leerForm():
     )  
     if archivo is not None: #Comienza analisis
         lectura = archivo.read()
+
         txt.insert('insert',lectura)
     else:
         messagebox.showinfo(message='Error al escoger el archivo',title='ARCHIVO .Form')
@@ -29,14 +32,12 @@ def analizar():
 
             tokens = metodos.listaTokens
             metodos.analizar(texto)
-            componentes = Form()
-            etiquetas = componentes.allEtiquetas(tokens)
-            print(etiquetas,'\n')
-            
-            componentes.crearForm(tokens)
+            componentes = Form(tokens)
+            componentes.allEtiquetas()
+            print(componentes.etiquetas,'\n')
+            componentes.doForm(texto)
             metodos.imprimirTokens()
             metodos.imprimirErrores()
-            componentes.enviarEtiquetas(etiquetas)
             # metodos.crearTTokens(tokens)
             # metodos.crearTErrores(errores)
     else:
