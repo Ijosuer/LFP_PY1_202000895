@@ -34,11 +34,11 @@ class Scanner:
             self.estado = 2
             self.buffer += caracter
             self.columna += 1
-        elif caracter == '<':
+        elif caracter == '[':
             self.estado = 3
             self.buffer += caracter
             self.columna += 1
-        elif caracter == '>':
+        elif caracter == ']':
             self.estado = 4
             self.buffer += caracter
             self.columna += 1
@@ -54,11 +54,11 @@ class Scanner:
             self.estado = 7
             self.buffer += caracter
             self.columna += 1
-        elif caracter == '[':
+        elif caracter == '<':
             self.estado = 8
             self.buffer += caracter
             self.columna += 1
-        elif caracter == ']':
+        elif caracter == '>':
             self.estado = 9
             self.buffer += caracter
             self.columna += 1
@@ -107,13 +107,13 @@ class Scanner:
     
     def s3(self):
         '''Estado 3'''
-        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo Menor Que')
+        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo Abre corchete')
         self.estado = 0
         self.i -= 1
     
     def s4(self):
         '''Estado 4'''
-        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo Mayor Que')
+        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo Cierra corchete')
         self.estado = 0
         self.i -= 1
     
@@ -158,13 +158,13 @@ class Scanner:
 
     def s8(self):
         '''Estado 8'''
-        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo abre Corchete')
+        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo Menor Q')
         self.estado = 0
         self.i -= 1
     
     def s9(self):
         '''Estado 9'''
-        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo cierra Corchete')
+        self.agregar_Token(self.buffer,self.fila,self.columna,'Signo Mayor Q')
         self.estado = 0
         self.i -= 1
     

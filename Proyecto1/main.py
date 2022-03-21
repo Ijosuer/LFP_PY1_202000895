@@ -1,6 +1,6 @@
 from tkinter import Tk,filedialog, messagebox
 from tkinter import *
-
+import webbrowser
 from matplotlib.pyplot import text
 
 from Form import Form
@@ -50,10 +50,11 @@ def reportes():
     elif op == 'Reporte de Errores':
         metodos.crearTErrores()
     elif op == 'Manual de Usuario':
-        print('Manual de usuario paps')
+        path = './Manual_usuario.pdf'
+        webbrowser.open_new(path)
     elif op == 'Manual Tecnico':
-        print('Manual tecnico paps')
-
+        path = './Manual_Tecnico1.pdf'
+        webbrowser.open_new(path)
 
 # Aqui esta toda la app grafica.
 if __name__ == '__main__':
